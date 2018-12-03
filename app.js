@@ -249,12 +249,21 @@ const App = (function (ItemCtrl, UICtrl) {
 
   // Update item Submit
   const itemUpdateSubmit = function (e) {
+    
     const input = UICtrl.getItemInput();
 
     const updatedItem = ItemCtrl.updateItem(input.name, input.calories);
 
     // UPdate UI
     UICtrl.updatedListItem(updatedItem);
+
+    // Get total calories
+    const totalCalories = ItemCtrl.getTotalCalories();
+
+    //Add total calories to UI
+    UICtrl.showTotalCalories(totalCalories);
+
+    UICtrl.clearEditState();
 
     e.preventDefault();
   }
